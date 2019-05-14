@@ -1,7 +1,7 @@
-load('D:\chenglin_HDCA_heart\CellCalling_190403\o_heart_20190403.mat');
+load('o_heart_20190505.mat');
 
 %% iss.json
-fid = fopen('dashboard\data\img\heart\json\iss.json', 'w');
+fid = fopen('iss.json', 'w');
 fprintf(fid, '[');
 for n = 1:length(o.CellYX)
     fprintf(fid, '{"Cell_Num":%d,"Y":%f,"X":%f,', n, o.CellYX(n,1), o.CellYX(n,2));
@@ -38,7 +38,7 @@ end
 fclose(fid);
 
 %% dapi_overlays.json
-fid = fopen('dashboard\data\img\heart\json\Dapi_overlays.json', 'w');
+fid = fopen('Dapi_overlays.json', 'w');
 fprintf(fid, '[');
 for n = 1:length(o.SpotCodeNo)
     fprintf(fid, '{"Gene":"%s","Expt":%d,"y":%f,"x":%f,', o.GeneNames{o.SpotCodeNo(n)}, o.SpotCodeNo(n), o.SpotGlobalYX(n,1), o.SpotGlobalYX(n,2));
@@ -47,11 +47,12 @@ for n = 1:length(o.SpotCodeNo)
     [p, parent] = sort(pSpotCell, 'descend');
     if pSpotCell(parent(1)) > 0.05
         
-        fprintf(fid, '"neighbour":%d,', parent(1)-1);
-        fmt = lineformat('%d', nnz(p>0.001));
-        fprintf(fid, ['"neighbour_array":[' strrep(fmt, '\n', '],')], parent(1:nnz(p>0.001))-1);
-         fmt = lineformat('%f', nnz(p>0.001));
-        fprintf(fid, ['"neighbour_prob":[' strrep(fmt, '\n', ']}')], p(1:nnz(p>0.001)));
+        fprintf(fid, '"neighbour":%d,', parent(1));
+%         fmt = lineformat('%d', nnz(p>0.001));
+%         fprintf(fid, ['"neighbour_array":[' strrep(fmt, '\n', '],')], parent(1:nnz(p>0.001)));
+%         fmt = lineformat('%f', nnz(p>0.001));
+%         fprintf(fid, ['"neighbour_prob":[' strrep(fmt, '\n', ']}')], p(1:nnz(p>0.001)));
+        
     else
         fprintf(fid, '"neighbour":null,"neighbour_array":null,"neighbour_prob":null}');
     end

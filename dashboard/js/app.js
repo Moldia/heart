@@ -138,6 +138,6 @@ function getLandingCoords(str){
     return out
 }
 
-function getMinZoom(str) {
-    return str === 'default' ? 4 : 2;
-}
+// function getMinZoom(str) {
+//     return str === 'default' ? 4 : 2;
+// }

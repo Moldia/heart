@@ -16,7 +16,7 @@ function section() {
     var tsn = d3.transition().duration(1000);
 
     // radius of points in the scatterplot
-    var pointRadius = .1;
+    var pointRadius = .0001;
 
     var scale = {
         x: d3.scaleLinear().range([0, width]),
@@ -115,25 +115,26 @@ function section() {
     // voronoi
     var voronoi = d3.voronoi()
 
+
     function renderOrder(y) {
-        return y === 'Zero' ? 1 :
-            y === '14' ? 2 :
-                y === '13' ? 3 :
-                    y === '12' ? 4 :
-                        y === '11' ? 5 :
-                            y === '10' ? 6 :
-                                y === '9' ? 7 :
-                                    y === '8' ? 8 :
-                                        y === '7' ? 9 :
-                                            y === '6' ? 10 :
-                                                y === '5' ? 11 :
-                                                    y === '4' ? 12 :
-                                                        y === '3' ? 13 :
-                                                            y === '2' ? 14 :
-                                                                y === '1' ? 15 :
-                                                                    y === '0' ? 16 :
-                                                                        17;
-    }
+        return y === 'Uncalled' ? 1 :
+            y === '(14) Cardiac neural crest-related' ? 2 :
+            y === '(13) Immune cells' ? 3 :
+            y === '(12) Cardiomyocytes' ? 4 :
+            y === '(11) Erythrocytes-2' ? 5 :
+            y === '(10) Endohelium/ pericytes/ adventia' ? 6 :
+            y === '(9) Epicardial cells' ? 7 :
+            y === '(8) Fibroblast-like (outflow)' ? 8 :
+            y === '(7) Atrial cardiomyocytes' ? 9 :
+            y === '(6) Erythrocytes-1' ? 10 :
+            y === '(5) Smooth muscle cells' ? 11 :
+            y === '(4) Fibroblast-like (vasculature)' ? 12 :
+            y === '(3) Subepicardial cells' ? 13 :
+            y === '(2) Fibroblast-like (mesencyme)' ? 14 :
+            y === '(1) Ventricular cardiomyocytes' ? 15 :
+            y === '(0) Capillary endothelium' ? 16 :
+                17;
+}
 
 
     var chartData = {};

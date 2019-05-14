@@ -8,8 +8,11 @@ function partitioner(d){
         //d.Prob can possibly be just a float. Make sure it is an array
         d.Prob = [d.Prob]
     }
+
+
     for (var i = 0; i < d.Prob.length; i++) {
         d.Prob[i] < 0.02? ClassName = 'Other': ClassName = d.ClassName[i]
+
         datapoint.push({
             Prob: d.Prob[i],
             labels: ClassName,
@@ -18,6 +21,10 @@ function partitioner(d){
 
     // group by class name. This will eventually sum all the values that fall in the same class.
     //Hence if there is a class 'Other' then is will be assigned with the grand total
+    var classColors = classColorsCodes();
+    var classColorsMap = d3.map(classColors, function (d) {
+        return d.className;
+    });
     datapoint =  d3.nest().key(function(d){
         return d.labels; })
         .rollup(function(leaves){
@@ -25,7 +32,7 @@ function partitioner(d){
                 return d.Prob;})
         }).entries(datapoint)
         .map(function(d){
-            return { labels: d.key, Prob: d.value};
+            return { labels: d.key, Prob: d.value, IdentifiedType: classColorsMap.get(d.key.trim()).IdentifiedType};
         });
 
     // sort in decreasing order

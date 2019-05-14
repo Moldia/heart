@@ -24,24 +24,26 @@ function dapi(config) {
 
     //create color ramp. It would be better to have that in glyphAssignment.js since this is where glyph configuration is set.
     function getColor(y) {
-        return y === '0' ? '#FFFFFF' : //hsv: [0 0 1]);
-            y === '1' ? '#407F59' :      //hsv: [.4 .5 .5]);
-                y === '2' ? '#96B38F' :   //hsv: [.3 .2 .7]);
-                    y === '3' ? '#00FF00' :            //hsv: [1/3 1 1]);
-                        y === '4' ? '#44B300' :           //hsv: [.27 1 .7]);
-                            y === '5' ? '#0000FF' :    //hsv: [2/3 1 1]);
-                                y === '6' ? '#00B3FF' :           //hsv: [.55 1 1]);
-                                    y === '7' ? '#5C33FF' :         //hsv: [.7 .8 1]);
-                                        y === '8' ? '#FF00E6' :           //hsv: [.85 1 1]);
-                                            y === '9' ? '#FF0000' :          //hsv: [ 1 1 1]);
-                                                y === '10' ? '#FFC700' :           //hsv: [.13 1 1]);
-                                                y === '11' ? '#5C33FF' :         //hsv: [.7 .8 1]);
-                                                y === '12' ? '#FF00E6' :           //hsv: [.85 1 1]);
-                                                    y === '13' ? '#FF0000' :          //hsv: [ 1 1 1]);
-                                                        y === '14' ? '#FFC700' :           //hsv: [.13 1 1]);
-                                                             y === 'less_active' ? '#995C00' :        //hsv: [.1 1 .6]);
-                                                        '#FD6A02';
-    }
+        return y === '0' ? '#F8766D' :
+            y === '1' ? '#E58700' :
+            y === '2' ? '#C99800' :
+            y === '3' ? '#A3A500' :
+            y === '4' ? '#6BB100' :
+            y === '5' ? '#00BA38' :
+            y === '6' ? '#00BF7D' :
+            y === '7' ? '#00C0AF' :
+            y === '8' ? '#00BCD8' :
+            y === '9' ? '#00B0F6' :
+            y === '10' ? '#619CFF' :
+            y === '11' ? '#B983FF' :
+            y === '12' ? '#E76BF3' :
+            y === '13' ? '#FD61D1' :
+            y === '14' ? '#FF67A4' :
+            y === 'cardiomyocyte' ? '#995C00' :
+            y === 'general' ? '#995C00' :
+            y === 'unclear' ? '#995C00' :
+                '#FD6A02';
+}
 
     function getTaxonomy(gene){
         if(glyphMap.get(gene)){
@@ -81,9 +83,10 @@ function dapi(config) {
         return r;
     }
 
-    var minZoom = getMinZoom(config.name),
+    // var minZoom = getMinZoom(config.name),
+    var minZoom = 1,
         maxZoom = 7;
-
+        
     // The transformation in this CRS maps the bottom left corner to (0,0) and the top right to (256, 256). (Tiles are assumed to be 256x256)
     // Assuming you are working with 7 zoom levels that means the longest side (height or width, should not matter) of the image is 16384px.
     // The transformation works as explained below:
@@ -119,7 +122,7 @@ function dapi(config) {
         minZoom: minZoom,
         maxZoom: maxZoom,
         attributionControl: false,
-    }).setView([img[1] / 7, img[0] / 2], 7);
+    }).setView([img[1] / 2, img[0] / 2], 0);
 
     // //remove the rect from the section chart when you leave the dapi chart
     // map.on('mouseout', hideRect);
@@ -976,7 +979,7 @@ function dapiChart(cellData, geneData, config) {
             dapiConfig.info.update()
 
             // 3. reset the rect on the section chart
-            // resetSectionRect(e)
+            resetSectionRect(e)
 
             // 4. remove lineStrings
             if (lineStrings){

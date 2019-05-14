@@ -100,8 +100,8 @@
     <script src='dashboard/js/spotPopup.js'></script>
     <script src='dashboard/js/dapi.js'></script>
     <script src='dashboard/js/glyphAssignment.js'></script>
-    <script src='dashboard/js/heatmap.js'></script>
-    <script src='dashboard/js/exporter.js'></script>
+    <!-- <script src='dashboard/js/heatmap.js'></script> -->
+    <!-- <script src='dashboard/js/exporter.js'></script> -->
     <!--<script src='dashboard/js/index.js'></script>-->
     <script src='dashboard/js/config.js'></script>
     <script src='dashboard/js/app.js'></script> <!--Keep that at the bottom. below all other js files-->
@@ -267,58 +267,76 @@
                                                     <!--<label>-->
                                                     <tbody>
                                                     <tr>
-                                                        <td>Select All</td>
                                                         <td><input type="checkbox" name="cb:select-all"/></td>
-                                                        <td class="checkBoxLabel">Clear All</td>
-                                                        <td><input type="checkbox" name="cb:clear-all"/></td>
+                                                        <td> Select All</td>
                                                     </tr>
                                                     <tr style="width:95px; border-top:1px solid #8a9597;">
-                                                        <td>0</td>
-                                                        <td><input type="checkbox" name="0"/></td>
-                                                        <td class="checkBoxLabel">1</td>
-                                                        <td><input type="checkbox" name="1"/></td>
+                                                        <td><input type="checkbox" name="(0) Capillary endothelium"/></td>
+                                                        <td> (0) Capillary endothelium</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>2</td>
-                                                        <td><input type="checkbox" name="2"/></td>
-                                                        <td class="checkBoxLabel">3</td>
-                                                        <td><input type="checkbox" name="3"/></td>
+                                                        <td><input type="checkbox" name="(1) Ventricular cardiomyocytes"/></td>
+                                                        <td> (1) Ventricular cardiomyocytes</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>4</td>
-                                                        <td><input type="checkbox" name="4"/></td>
-                                                        <td class="checkBoxLabel">5</td>
-                                                        <td><input type="checkbox" name="5"/></td>
+                                                        <td><input type="checkbox" name="(2) Fibroblast-like (mesencyme)"/></td>
+                                                        <td> (2) Fibroblast-like (AV mesencyme related)</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>6</td>
-                                                        <td><input type="checkbox" name="6"/></td>
-                                                        <td class="checkBoxLabel">7</td>
-                                                        <td><input type="checkbox" name="7"/></td>
+                                                        <td><input type="checkbox" name="(3) Subepicardial cells"/></td>
+                                                        <td> (3) Subepicardial cells</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>8</td>
-                                                        <td><input type="checkbox" name="8"/></td>
-                                                        <td class="checkBoxLabel">9</td>
-                                                        <td><input type="checkbox" name="9"/></td>
+                                                        <td><input type="checkbox" name="(4) Fibroblast-like (vasculature)"/></td>
+                                                        <td> (4) Fribroblast-like (coronary & mediastinal vasculature related)</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>10</td>
-                                                        <td><input type="checkbox" name="10"/></td>
-                                                        <td class="checkBoxLabel">11</td>
-                                                        <td><input type="checkbox" name="11"/></td>
+                                                        <td><input type="checkbox" name="(5) Smooth muscle cells"/></td>
+                                                        <td> (5) Smooth muscle cells/ fibroblast-like</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>12</td>
-                                                        <td><input type="checkbox" name="12"/></td>
-                                                        <td class="checkBoxLabel">13</td>
-                                                        <td><input type="checkbox" name="13"/></td>
+                                                        <td><input type="checkbox" name="(6) Erythrocytes-1"/></td>
+                                                        <td> (6) Erythrocytes-1</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>14</td>
-                                                        <td><input type="checkbox" name="14"/></td>
-                                                        <td class="checkBoxLabel">Zero</td>
-                                                        <td><input type="checkbox" name="Zero"/></td>
+                                                        <td><input type="checkbox" name="(7) Atrial cardiomyocytes"/></td>
+                                                        <td> (7) Atrial cardiomyocytes</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" name="(8) Fibroblast-like (outflow)"/></td>
+                                                        <td> (8) Fibroblast-like (outflow tract & vales related)</td>
+                                                    </tr>                                                        
+                                                    <tr>
+                                                        <td><input type="checkbox" name="(9) Epicardial cells"/></td>
+                                                        <td> (9) Epicardial cells</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" name="(10) Endohelium/ pericytes/ adventia"/></td>
+                                                        <td> (10) Endothelium / pericytes/ adventia</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" name="(11) Erythrocytes-2"/></td>
+                                                        <td> (11) Erythrocytes-2</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" name="(12) Cardiomyocytes"/></td>
+                                                        <td> (12) Cardiomyocytes</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" name="(13) Immune cells"/></td>
+                                                        <td> (13) Immune cells</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" name="(14) Cardiac neural crest-related"/></td>
+                                                        <td> (14) Cells related to cardiac neural crest</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" name="Uncalled"/></td>
+                                                        <td> Uncalled</td>
+                                                    </tr>
+                                                    <tr style="width:95px; border-top:1px solid #8a9597;">
+                                                        <td><input type="checkbox" name="cb:clear-all"/></td>
+                                                        <td> Clear All</td>
                                                     </tr>
 
 
