@@ -153,15 +153,7 @@ function getSelected(inputs) {
     var selected = [];
     for (var i = 0; i < inputs.length; i++) {
         if (inputs[i].checked) {
-            if (inputs[i].name === 'Cck') {
-                selected.push('Cck Calb1/Slc17a8*', 'Cck Cxcl14-', 'Cck Cxcl14+', 'Cck Vip Cxcl14-', 'Cck Vip Cxcl14+');
-            } else if (inputs[i].name === 'PC') {
-                selected.push('PC', 'PC Other1', 'PC Other2')
-            } else if (inputs[i].name === 'IS') {
-                selected.push('IS1', 'IS2', 'IS3')
-            } else {
-                selected.push(inputs[i].name);
-            }
+            selected.push(inputs[i].name);
         }
     }
     return selected

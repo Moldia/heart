@@ -230,6 +230,7 @@ function sectionChart(data) {
     }
 
     svg = sectionFeatures.svg;
+    console.log(sectionFeatures.height)
 
     var managedData = dataManager(sectionFeatures, data)
     //update now data with a managedData property
@@ -273,6 +274,11 @@ function sectionChart(data) {
 
         sectionFeatures.scale.x.domain([extent.x[0] * 0.99, extent.x[1] * 1.01]).nice()
         sectionFeatures.scale.y.domain([extent.y[1] * 1.01, extent.y[0] * 0.99]).nice()
+
+        // configSettings = config().get('week 4.5')
+
+        // sectionFeatures.scale.x.domain([0 * 0.99, sectionFeatures.width * 1.01]).nice()
+        // sectionFeatures.scale.y.domain([sectionFeatures.height * 1.01, 0 * 0.99]).nice()
     }
 
     var gridlines = {
