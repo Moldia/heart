@@ -6,8 +6,8 @@ function config(){
             name: 'week 4.5',
             roi: {x0: 0, x1: 12358, y0: 0, y1: 13178},
             imageSize: [15365, 16384],
-            cellData: './dashboard/data/img/heart4.5/json/iss.json',
-            geneData: './dashboard/data/img/heart4.5/json/Dapi_overlays.json',
+            cellData: './dashboard/data/img/heart4.5/json_subset/iss.json',
+            geneData: './dashboard/data/img/heart4.5/json_subset/Dapi_overlays.json',
             tiles: './dashboard/data/img/heart4.5/week4_zoom7/{z}/{x}/{y}.png'
         },
         {

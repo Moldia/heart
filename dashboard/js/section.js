@@ -230,7 +230,7 @@ function sectionChart(data) {
     }
 
     svg = sectionFeatures.svg;
-    console.log(sectionFeatures.height)
+    // console.log(sectionFeatures.height)
 
     var managedData = dataManager(sectionFeatures, data)
     //update now data with a managedData property

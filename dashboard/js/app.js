@@ -106,12 +106,10 @@ function landingPoint(name){
 
 //create ramp
 function getLandingCellNum(str) {
-    return str === '99 gene panel' ? 2279 :
-        str === 'week 4.5' ? 2855 :
-            str === 'Simulated spots (98 gene panel)' ? 2279 :
-                str === 'Simulated spots (62 gene panel)' ? 2279 :
-                    str === 'Simulated spots (42 gene panel)' ? 2279 :
-                            1;
+    return str === 'week 4.5' ? 2855 :
+        str === 'week 6.5' ? 2855 :
+        str === 'week 9.5' ? 2855 :
+        1;
 }
 
 
