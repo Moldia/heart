@@ -1,9 +1,15 @@
-function [NamesToShow, ColorsToShow] = pie_plot_heart(o)
+function [NamesToShow, ColorsToShow] = pie_plot_heart(o, MinReads)
 % plot pie chart for each cell, showing probability of it belonging to all
 % classes
 
 nC = size(o.CellYX,1);
 nK = size(o.pCellClass,2);
+
+if nargin > 1
+else
+    MinReads = 0;
+end
+
 
 % find classes to collapse
 CollapseMe = zeros(nK,1);
@@ -19,6 +25,7 @@ for i=1:size(o.ClassCollapse,1)
         DisplayName(MyClasses) = o.ClassCollapse(i,2);
     end
 end
+DoNotShow = ~ismember(o.ClassNames, cat(1, o.ClassCollapse{:,1}))';
 
 % nColorWheel = sum(CollapseMe==0);
 % 
@@ -45,8 +52,8 @@ for c=1:nC
 %         pMy(collapseThese(2:end)) = 0;
 %     end
     
-    WorthShowing = find(pMy>o.MinPieProb);
-    if ~isempty(WorthShowing)
+    WorthShowing = find(pMy>o.MinPieProb & ~DoNotShow);
+    if ~isempty(WorthShowing) && sum(o.pSpotCell(:,c))>MinReads
 
         h = pie(pMy(WorthShowing), repmat({''}, 1, sum(WorthShowing>0)));
 
@@ -73,7 +80,7 @@ xMax = max(o.CellYX(:,2));
 yMin = min(o.CellYX(:,1));
 xMin = min(o.CellYX(:,2));
 
-ClassShown = find(any(o.pCellClass>o.MinPieProb,1));
+ClassShown = find(any(o.pCellClass>o.MinPieProb & ~DoNotShow ,1));
 ClassDisplayNameShown = DisplayName(ClassShown);
 [uDisplayNames, idx] = unique(ClassDisplayNameShown, 'stable');
 nShown = length(uDisplayNames);

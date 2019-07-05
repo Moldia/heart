@@ -1,4 +1,4 @@
-I = imread('D:\chenglin_HDCA_heart\issSingleCell\base1_c1_ORG.tif');
+I = imread('..\..\week6.5_1\issSingleCell\base1_c1_ORG.tif');
 I = single(I);
 
 % % zoom 8
@@ -28,4 +28,5 @@ clear I
 I3 = uint8(I2/prctile(I2(:), 99)*255);
 
 clear I2
-imwrite(I3, 'D:\chenglin_HDCA_heart\images_for_viewer\week6_zoom7.tif', 'tiff');
+% flip x axis
+imwrite(fliplr(I3), '..\..\images_for_viewer\week6.5_1_zoom7.tif', 'tiff');
