@@ -1,11 +1,11 @@
 function section() {
 
-    var totalWidth = 450,
-        totalHeight = 275;
+    var totalWidth = 350,
+        totalHeight = 280;
 
     var margin = {
         top: 10,
-        left: 50,
+        left: 60,
         bottom: 30,
         right: 0
     }
@@ -118,22 +118,22 @@ function section() {
 
     function renderOrder(y) {
         return y === 'Uncalled' ? 1 :
-            y === '(14) Cardiac neural crest-related' ? 2 :
-            y === '(13) Immune cells' ? 3 :
-            y === '(12) Cardiomyocytes' ? 4 :
-            y === '(11) Erythrocytes-2' ? 5 :
-            y === '(10) Endohelium/ pericytes/ adventia' ? 6 :
-            y === '(9) Epicardial cells' ? 7 :
-            y === '(8) Fibroblast-like (outflow)' ? 8 :
-            y === '(7) Atrial cardiomyocytes' ? 9 :
-            y === '(6) Erythrocytes-1' ? 10 :
-            y === '(5) Smooth muscle cells' ? 11 :
-            y === '(4) Fibroblast-like (vasculature)' ? 12 :
-            y === '(3) Subepicardial cells' ? 13 :
-            y === '(2) Fibroblast-like (mesencyme)' ? 14 :
-            y === '(1) Ventricular cardiomyocytes' ? 15 :
-            y === '(0) Capillary endothelium' ? 16 :
-                17;
+            // y === '(13) Immune cells' ? 3 :
+            // y === '(11) Erythrocytes-2' ? 5 :
+            // y === '(6) Erythrocytes-1' ? 10 :
+            y === '(10) Endohelium/ pericytes/ adventia' ? 2 :
+            y === '(8) Fibroblast-like (larger vascular development)' ? 3 :
+            y === '(4) Fibroblast-like (smaller vascular development)' ? 4 :
+            y === '(2) Fibroblast-like (connective tissue related)' ? 5 :
+            y === '(0) Capillary endothelium' ? 6 :
+            y === '(12) Cardiomyocytes' ? 7 :
+            y === '(7) Atrial cardiomyocytes' ? 8 :
+            y === '(1) Ventricular cardiomyocytes' ? 9 :
+            y === '(5) Smooth muscle cells/ fibroblast-like' ? 10 :
+            y === '(9) Epicardial cells' ? 11:
+            y === '(3) Epicardium-derived cells' ? 12 :
+            y === '(14) Cardiac neural crest cells & Schwann progenitor cells' ? 13 :
+                14;
 }
 
 
@@ -272,13 +272,11 @@ function sectionChart(data) {
     function updateScales() {
         var extent = getExtent();
 
-        sectionFeatures.scale.x.domain([extent.x[0] * 0.99, extent.x[1] * 1.01]).nice()
-        sectionFeatures.scale.y.domain([extent.y[1] * 1.01, extent.y[0] * 0.99]).nice()
-
-        // configSettings = config().get('week 4.5')
-
-        // sectionFeatures.scale.x.domain([0 * 0.99, sectionFeatures.width * 1.01]).nice()
-        // sectionFeatures.scale.y.domain([sectionFeatures.height * 1.01, 0 * 0.99]).nice()
+        // TODO: adjust axes based on image size, not selected data
+        // sectionFeatures.scale.x.domain([extent.x[0] -40, extent.x[1] +40]).nice()
+        // sectionFeatures.scale.y.domain([extent.y[1] +40, extent.y[0] -150]).nice()
+        sectionFeatures.scale.x.domain([-20, 20000]).nice()
+        sectionFeatures.scale.y.domain([20000, -100]).nice()
     }
 
     var gridlines = {

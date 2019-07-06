@@ -1,21 +1,21 @@
 
 // THESE ARE NOW IN THE GLOBAL SCOPE
-var cookie = sessionStorage['myvariable'],
-    localhostFolderCookie = sessionStorage['localhostFolderPath'],
-    issFileCookie = sessionStorage['issFilePath'],
-    spotsFileCookie = sessionStorage['spotsFilePath'],
-    portCookie = sessionStorage['myPort'],
-    roiCookie = sessionStorage['roi'],
-    tilesCookie = sessionStorage['tilesPath'],
-    imageSizeCookie = sessionStorage['imageSizeStr'],
-    cellData,
-    geneData,
-    configSettings;
+var cookie = sessionStorage['myvariable']
+    // localhostFolderCookie = sessionStorage['localhostFolderPath'],
+    // issFileCookie = sessionStorage['issFilePath'],
+    // spotsFileCookie = sessionStorage['spotsFilePath'],
+    // portCookie = sessionStorage['myPort'],
+    // roiCookie = sessionStorage['roi'],
+    // tilesCookie = sessionStorage['tilesPath'],
+    // imageSizeCookie = sessionStorage['imageSizeStr'],
+    // cellData,
+    // geneData,
+    // configSettings;
 
 
-if (!issFileCookie){ // if you dont have cookie, run the default selection
+if (!cookie){ // if you dont have cookie, run the default selection
     console.log('No cookie, starting with default dataset');
-    configSettings = config().get('week 4.5')
+    configSettings = config().get('week 6.5_2')
 }
 else {
     console.log('Found cookie: ' + cookie);
@@ -23,45 +23,48 @@ else {
 }
 run(configSettings);
 
-
-function dispatcher(userInputs){
-    console.log('Starting '+ userInputs.x);
+function dispatcher(x){
+    console.log('you clicked '+ x)
 
     //save a cookie
-    sessionStorage['myvariable'] = userInputs.x;
-    sessionStorage['localhostFolderPath'] = userInputs.localhostPath;
-    sessionStorage['myPort'] = userInputs.localhostPort;
-    sessionStorage['issFilePath'] = userInputs.issFile;
-    sessionStorage['spotsFilePath'] = userInputs.spotsFile;
-    sessionStorage['roi'] = userInputs.roiPoints;
-    sessionStorage['tilesPath'] = userInputs.tilesRoot;
-    sessionStorage['imageSizeStr'] = userInputs.imageSizeStr;
+    sessionStorage['myvariable'] = x;
 
-    //reload the page
+    //reload page
     location.reload(true);
 
 }
+
+// function dispatcher(userInputs){
+//     console.log('Starting '+ userInputs.x);
+
+//     //save a cookie
+//     sessionStorage['myvariable'] = userInputs.x;
+//     sessionStorage['localhostFolderPath'] = userInputs.localhostPath;
+//     sessionStorage['myPort'] = userInputs.localhostPort;
+//     sessionStorage['issFilePath'] = userInputs.issFile;
+//     sessionStorage['spotsFilePath'] = userInputs.spotsFile;
+//     sessionStorage['roi'] = userInputs.roiPoints;
+//     sessionStorage['tilesPath'] = userInputs.tilesRoot;
+//     sessionStorage['imageSizeStr'] = userInputs.imageSizeStr;
+
+//     //reload the page
+//     location.reload(true);
+
+// }
 
 
 function run(c){
     var cellJson = c.cellData;
     var geneJson = c.geneData;
 
-    if (configSettings.name === 'week 4.5'){
-        console.log('config is set to week 4.5')
-        console.log('cellJson is ' + cellJson)
-        console.log('geneJson is ' + geneJson)
-        d3.queue()
-        .defer(d3.json, cellJson)
-        .defer(d3.json, geneJson)
-        .await(splitCharts(c))
-    }
-    else {
-        d3.queue()
-        .defer(d3.json, cellJson)
-        .defer(d3.csv, geneJson)
-        .await(splitCharts(c))
-    }
+    console.log('config is set to ' + configSettings.name)
+    console.log('cellJson is ' + cellJson)
+    console.log('geneJson is ' + geneJson)
+    d3.queue()
+    .defer(d3.json, cellJson)
+    .defer(d3.json, geneJson)
+    .await(splitCharts(c))
+
 
 }
 
@@ -107,8 +110,9 @@ function landingPoint(name){
 //create ramp
 function getLandingCellNum(str) {
     return str === 'week 4.5' ? 2855 :
-        str === 'week 6.5' ? 2855 :
-        str === 'week 9.5' ? 2855 :
+        str === 'week 6.5_1' ? 2507 :
+        str === 'week 6.5_2' ? 2621 :
+        // str === 'week 6.5_2' ? 17734 :
         1;
 }
 

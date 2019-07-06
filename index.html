@@ -21,7 +21,7 @@
 
     <meta charset='utf-8'>
 
-    <title>Dashboard</title>
+    <title>Developing heart</title>
 
     <meta name="description" content="A d3.js dashboard for data visualisation">
 
@@ -136,31 +136,24 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h2 class="modal-title">Transcriptomics viewer</h2>
+                <h2 class="modal-title">Probabilistic cell map</h2>
             </div>
             <div class="modal-body">
 
                 <p>
-                    This online viewer shows a spatial atlas of neuron types in the mouse hippocampus,
-                    based on their combinatorial expression of 99 genes.
+                    This online viewer shows a spatial cell map of human developing heart at 6.5 PCW timepoint.
                 </p>
 
                 <p>
-                    The brain contains hundreds of types of cells, and understanding their organization is an essential
-                    step toward understanding how the brain operates. Each type of cell transcribes a unique combination
-                    of genes from DNA to RNA.
-                    If you know which RNA molecules a cell contains, you can find out what cell type it is.
+                   The manuscript
                 </p>
 
                 <p>
-                    We used <i>in situ</i> RNA sequencing to map the expression of 99 genes in 28 different sections of
-                    mouse
-                    hippocampus – a part of the brain involved in memory, where the subtypes of neurons are understood
-                    well.
+                    We used <i>in situ</i> sequencing to map the expression of 69 genes human 6.5 PCW heart.
                 </p>
 
                 <p>
-                    The Gene Map on the left shows where the RNA molecules were detected.
+                    The visualization window on the left shows where the RNA molecules were detected.
                     Each colored symbol represents an RNA detection – hover over a symbol to see what gene it
                     represents.
                     The white blobs show cell nuclei, and the gray dotted lines show their estimated borders.
@@ -172,19 +165,16 @@
                 <p>
                     Use the Section Overview (top right panel) to zoom around – click any cell and it will take you
                     straight there.
-                    To show data from a different experiment, click “Select Data”, in the top left of the window.
+                    <!-- To show data from a different experiment, click “Select Data”, in the top left of the window. -->
                 </p>
 
                 <p>
-                    A full explanation of this data and algorithms that produced the atlas is in
+                    A full description of the study and data is can be found in the manuscript
+                     "A spatiotemporal organ-wide gene expression and cell atlas of the developing human heart".
+                    The call typing algorithms w=was described in is in
                     <a href="https://www.biorxiv.org/content/early/2018/10/01/431957" target="_blank"> this paper</a>,
-                    where you
-                    can also find details on how to contact us. An explanation of what the different cell types are,
-                    and how we know which RNAs they express,
-                    is in <a
-                        href="https://journals.plos.org/plosbiology/article/comments?id=10.1371/journal.pbio.2006387"
-                        target="_blank">
-                    this paper</a>.
+                    where you can also find details on how to contact mats.nilsson@scilifelab.se 
+                    
                 </p>
 
             </div>
@@ -196,16 +186,36 @@
     </div>
 </div>
 
+
 <!-- main page container, holding the nav tabs and content -->
 <div id="container">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Cell Mapping Visualization</a>
+                    <a class="navbar-brand" href="#">6.5 PCW fetal heart</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown" id="myDropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Select Tissue Section
+                                <span class="caret"></span>
+                            </a>
+                            <script>
+                                var aa="abc";
+                                var bb=2;
+                            </script>
+                            <ul class="dropdown-menu">
+   
+                                <li><a class="dropdown-item" href="#" onclick='dispatcher("week 6.5_1")'>week 6.5_1</a></li>
+                                <li><a class="dropdown-item" href="#" onclick='dispatcher("week 6.5_2")'>week 6.5_2 (default)</a></li>
+
+                            </ul>
+                        </li>                   
+                     </ul>
+
+                     <ul class="nav navbar-nav navbar-right">
                         <li><a data-target="#myModal" data-toggle="modal" href="#myModal">About</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -216,10 +226,6 @@
 
     <!-- tab navigation -->
     <ul class="nav nav-tabs" role="tablist" id="index-tabs" style="margin-top:-6px;">
-        <!-- nav bar left side: tabs -the map, table, about nav tabs, for content, see below -->
-        <li class="active"><a href="#map-content" data-toggle="tab" id="map-tab">Viewer</a></li>
-        <!-- <li><a href="#settings-content" data-toggle="tab" id="settings-tab">Settings</a></li> -->
-        <!-- <li><a href="#help-content" data-toggle="tab" id="help-tab">Help</a></li> -->
     </ul>
 
     <!-- content for the nav tabs -->
@@ -256,12 +262,12 @@
                                         </div>
                                         <div class="chart-stage">
                                             <!-- Scatter Plot -->
-                                            <div class="col-sm-8">
+                                            <div class="col-sm-7">
                                                 <div id="scatter-plot" class="display compact custom" ; width=100%>
                                                     <svg></svg>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-5">
                                                 <table class="no-spacing" id="section-chart-controls" width="100%">
                                                     <!--<div id = "section-chart-controls">-->
                                                     <!--<label>-->
@@ -279,32 +285,32 @@
                                                         <td> (1) Ventricular cardiomyocytes</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox" name="(2) Fibroblast-like (mesencyme)"/></td>
-                                                        <td> (2) Fibroblast-like (AV mesencyme related)</td>
+                                                        <td><input type="checkbox" name="(2) Fibroblast-like (connective tissue related)"/></td>
+                                                        <td> (2) Fibroblast-like (connective tissue related)</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox" name="(3) Subepicardial cells"/></td>
-                                                        <td> (3) Subepicardial cells</td>
+                                                        <td><input type="checkbox" name="(3) Epicardium-derived cells"/></td>
+                                                        <td> (3) Epicardium-derived cells</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox" name="(4) Fibroblast-like (vasculature)"/></td>
-                                                        <td> (4) Fribroblast-like (coronary & mediastinal vasculature related)</td>
+                                                        <td><input type="checkbox" name="(4) Fibroblast-like (smaller vascular development)"/></td>
+                                                        <td> (4) Fibroblast-like (smaller vascular development)</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox" name="(5) Smooth muscle cells"/></td>
+                                                        <td><input type="checkbox" name="(5) Smooth muscle cells/ fibroblast-like"/></td>
                                                         <td> (5) Smooth muscle cells/ fibroblast-like</td>
                                                     </tr>
-                                                    <tr>
+                                                    <!-- <tr>
                                                         <td><input type="checkbox" name="(6) Erythrocytes-1"/></td>
                                                         <td> (6) Erythrocytes-1</td>
-                                                    </tr>
+                                                    </tr> -->
                                                     <tr>
                                                         <td><input type="checkbox" name="(7) Atrial cardiomyocytes"/></td>
                                                         <td> (7) Atrial cardiomyocytes</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox" name="(8) Fibroblast-like (outflow)"/></td>
-                                                        <td> (8) Fibroblast-like (outflow tract & vales related)</td>
+                                                        <td><input type="checkbox" name="(8) Fibroblast-like (larger vascular development)"/></td>
+                                                        <td> (8) Fibroblast-like (larger vascular development)</td>
                                                     </tr>                                                        
                                                     <tr>
                                                         <td><input type="checkbox" name="(9) Epicardial cells"/></td>
@@ -314,26 +320,26 @@
                                                         <td><input type="checkbox" name="(10) Endohelium/ pericytes/ adventia"/></td>
                                                         <td> (10) Endothelium / pericytes/ adventia</td>
                                                     </tr>
-                                                    <tr>
+                                                    <!-- <tr>
                                                         <td><input type="checkbox" name="(11) Erythrocytes-2"/></td>
                                                         <td> (11) Erythrocytes-2</td>
-                                                    </tr>
+                                                    </tr> -->
                                                     <tr>
                                                         <td><input type="checkbox" name="(12) Cardiomyocytes"/></td>
                                                         <td> (12) Cardiomyocytes</td>
                                                     </tr>
-                                                    <tr>
+                                                    <!-- <tr>
                                                         <td><input type="checkbox" name="(13) Immune cells"/></td>
                                                         <td> (13) Immune cells</td>
-                                                    </tr>
+                                                    </tr> -->
                                                     <tr>
-                                                        <td><input type="checkbox" name="(14) Cardiac neural crest-related"/></td>
-                                                        <td> (14) Cells related to cardiac neural crest</td>
+                                                        <td><input type="checkbox" name="(14) Cardiac neural crest cells & Schwann progenitor cells"/></td>
+                                                        <td> (14) Cardiac neural crest cells & Schwann progenitor cells</td>
                                                     </tr>
-                                                    <tr>
+                                                    <!-- <tr>
                                                         <td><input type="checkbox" name="Uncalled"/></td>
                                                         <td> Uncalled</td>
-                                                    </tr>
+                                                    </tr> -->
                                                     <tr style="width:95px; border-top:1px solid #8a9597;">
                                                         <td><input type="checkbox" name="cb:clear-all"/></td>
                                                         <td> Clear All</td>
@@ -356,7 +362,7 @@
                                         <div class="chart-stage">
                                             <div class="col-sm-7">
                                                 <div class="chart-stage" id="bar-chart">
-                                                    <svg width="400" height="200">
+                                                    <svg width="400" height="170">
                                                         <!-- Add a clip path -->
                                                         <defs>
                                                             <clipPath id="my-clip-path">
@@ -377,7 +383,7 @@
 
                                             <div class="col-sm-5">
                                                 <div class="chart-stage" id="pie">
-                                                    <svg width="280" height="200"></svg>
+                                                    <svg width="280" height="170"></svg>
                                                 </div>
                                             </div>
                                         </div>
@@ -414,114 +420,15 @@
         </div>
 
 
-        <!-- <!- -settings tab- ->
-        <div class="tab-pane fade" id="settings-content">
-            <div class="container-fluid">
-                <!- -//top row- ->
-                <div class="row" style="margin-top:5px">
-                    <div class="col-md-6" id="settings-img">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Data Sources
-                            </div>
-                            <div class="chart-stage">
-                                <div style="margin-top:10px;">
-                                    <span class="input-group-text">Localhost folder</span>
-                                    <input type="text" id="localhostPath" aria-label="First name" class="form-control" placeholder='Folder to be served...'>
-                                </div>
-
-                                <div style="margin-top:10px;">
-                                    <span class="input-group-text">Port Number</span>
-                                    <input type="text" id="portNumber" class="form-control" placeholder='Port number...'>
-                                </div>
-
-                                <div style="margin-top:10px;">
-                                    <span class="input-group-text">Path to the csv file</span>
-                                    <input type="text" id="csvPath" class="form-control" placeholder='Enter the csv path...'>
-                                </div>
-
-                                <div style="margin-top:10px;">
-                                    <span class="input-group-text">Path to the json file</span>
-                                    <input type="text" id="jsonPath" class="form-control" placeholder='Enter the json path...'>
-                                </div>
-
-                                <div style="margin-top:10px;">
-                                    <span class="input-group-text">ROI</span>
-                                    <input type="text" id="roi" class="form-control" placeholder='Enter the roi points...'>
-                                </div>
-
-                                <div style="margin-top:10px;">
-                                    <span class="input-group-text">Path to the tiles' root (Optional, plain black backround if path doesnt exist)</span>
-                                    <input type="text" id="tilesPath" class="form-control" placeholder='Enter the root path of the image tiles...'>
-                                </div>
-
-                                <div style="margin-top:10px; margin-bottom:20px">
-                                    <span class="input-group-text">Image size (in pixels)</span>
-                                    <input type="text" id="imageSize" class="form-control" placeholder='Enter the image size...'>
-                                </div>
-
-                                <button type="submit" id="submitBtn" class="btn btn-primary pull-right" enabled>Submit</button>
-                                <button type="reset" id = "resetBtn" class="btn btn-danger" style="margin-bottom:5px">Reset</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!- - settings tab - -> -->
-
-        <!-- <!- -help tab- >
-        <div class="tab-pane fade" id="help-content">
-            <div class="container-fluid">
-                <!- -//top row- ->
-                <div class="row" style="margin-top:5px">
-                    <div class="col-md-6" id="help-img">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Instructions
-                            </div>
-                            <div class="chart-stage">
-                                <ul>
-                                    <li>
-                                        <p>
-                                            You will need to start a server so that your data can be sent upstream. Otherwise the request will be rejected from the browser's security features.
-                                            To do that download <a href="https://github.com/acycliq/iss_viewer/blob/master/dashboard/scripts/serverCors.py" target="_blank"> this Python 3 script</a> save it
-                                            in a folder which sits higher in the fileystem to the folder where you keep you csv and json files. For example, if you have your data at C:\dev\temp\viewerData then
-                                            you need to save the python script at C:\dev\temp (or C:\dev or even C:)
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            cd now into the folder you downloaded the Python script open a command window and run it by `python serverCors.py 8888 &` Keep this command window open while you are using
-                                            the viewer. You have now started a simple http server which serves its current directory and all its subdirecories and contents and will allow the data to be sent across upon request.
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            Most of the input fields on the "Settings" tab are self-explanatory. The ROI has to be enter like in this example:
-                                            {"x0": 6150, "x1": 13751, "y0": 12987, "y1": 18457}.
-                                            Note the inner double quotes, the commas and the outer curly brackets!!!
-                                            Also the image size should be set as two numbers separated by a comma and then enclosed by a two squared brackets.
-                                            Hence, once properly set these two field should look like the screen below:
-                                        </p>
-                                        <svg width="860" height="250">
-                                            <image xlink:href="./dashboard//scripts/screen_2.png" width="100%" height="100%" x="0" y="0" />
-                                        </svg>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
     </div><!-- tab-content -->
 
     <!--<hr>-->
 
     <div id="footnote" style="margin-top:-15px;">
-        <p class="small text-muted" id="alignleft">University College London - <a href="http://www.ucl.ac.uk/cortexlab">Cortexlab</a>  | Stockholm University - <a href="https://www.scilifelab.se/researchers/mats-nilsson/">SciLifeLab</a> </p>
+        <p class="small text-muted" id="alignleft"><a href="https://hdca-sweden.scilifelab.se/">Human Developmental Cell Atlas Sweden</a>
+             | Stockholm University <a href="https://www.scilifelab.se/researchers/mats-nilsson/">Nilsson Group</a>
+             | <a href="http://insitu.cortexlab.net/">Original viewer</a> developed by <a href="https://github.com/acycliq">Dimitris N.</a> 
+             from <a href="http://www.ucl.ac.uk/cortexlab">Cortexlab</a></p>
         <p class="small text-muted" id="alignright">Best viewed with <img src="./dashboard/data/img/if_chrome_87865.png" class="chromeIcon" alt="Warning!"></p>
     </div>
     <!--<div style="clear: both;"></div>-->
@@ -530,50 +437,16 @@
     <!--Another user script. Needs to be here, after all the divs have been read-->
     <script src='dashboard/js/index.js'></script>
 
+    <!-- uncheck all the tickboxes -->
     <script>
-        $("#submitBtn").click(function () {
-            String.prototype.unquoted = function (){return this.replace (/(^")|("$)/g, '')};
+    var checkboxes = document.getElementsByTagName('input');
 
-            var localhostPath = $('#localhostPath').val().unquoted();
-            var localhostPort = $('#portNumber').val().unquoted();
-            var spotsFile = $('#csvPath').val().unquoted();
-            var issFile = $('#jsonPath').val().unquoted();
-            var roiPoints = $('#roi').val();
-            var tilesRoot = $('#tilesPath').val();
-            var imageSizeStr = $('#imageSize').val();
-
-            //replace so it points to the localhost
-            spotsFile = spotsFile.replace(localhostPath.unquoted(), "http://localhost"+":"+ localhostPort);
-            issFile = issFile.replace(localhostPath.unquoted(), "http://localhost"+":"+ localhostPort);
-            tilesRoot = tilesRoot.replace(localhostPath.unquoted(), "http://localhost"+":"+ localhostPort);
-
-            console.log('Gene data will be fetched from ' + spotsFile);
-            console.log('Cell data will be fetched from ' + issFile);
-
-            var userInputs = {};
-            userInputs.x = 'User defined';
-            userInputs.localhostPath = localhostPath;
-            userInputs.localhostPort = localhostPort;
-            userInputs.issFile = issFile;
-            userInputs.spotsFile = spotsFile;
-            userInputs.roiPoints = roiPoints;
-            userInputs.tilesRoot = tilesRoot;
-            userInputs.imageSizeStr = imageSizeStr;
-            dispatcher(userInputs)
-        });
-
-        $("#resetBtn").click(function () {
-            console.log('resetting the input fields...')
-            $('#localhostPath').val('');
-            $('#portNumber').val('');
-            $('#csvPath').val('');
-            $('#jsonPath').val('');
-            $('#roi').val('');
-            $('#tilesPath').val('');
-            $('#imageSize').val('');
-        });
+        for (var i=0; i<checkboxes.length; i++)  {
+        if (checkboxes[i].type == 'checkbox')   {
+            checkboxes[i].checked = false;
+        }
+        }
     </script>
-
 
     <!--this will stop the preloader after 3sec. (can get rid off the time-out and make it show the webpage when all charts are rendered??)-->
     <script>
@@ -583,7 +456,19 @@
         }, 3000);
     </script>
 
-</div>
+    <script>
+
+        // when document ready, show selected on dropdown
+        $(function() {
+            if (cookie){
+                d3.select('.dropdown-toggle').node().text = cookie + '  '
+                $('.dropdown-toggle').append("<span class='caret'></span>");
+            }
+        });
+
+
+    </script>
+
 
 </body>
 

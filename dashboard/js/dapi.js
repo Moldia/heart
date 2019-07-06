@@ -1,18 +1,8 @@
 function dapi(config) {
 
     var img = config.imageSize;
-    // var img = [
-    //     65536, // original width of image
-    //     47168 // original height of image
-    // ];
 
     var roi = config.roi;
-    // var roi = { //range of interest
-    //     x0: 6150,
-    //     x1: 13751,
-    //     y0: 12987,
-    //     y1: 18457
-    // };
 
     a = img[0] / (roi.x1 - roi.x0)
     b = -img[0] / (roi.x1 - roi.x0) * roi.x0
@@ -39,8 +29,6 @@ function dapi(config) {
             y === '12' ? '#E76BF3' :
             y === '13' ? '#FD61D1' :
             y === '14' ? '#FF67A4' :
-            y === 'cardiomyocyte' ? '#995C00' :
-            y === 'general' ? '#995C00' :
             y === 'unclear' ? '#995C00' :
                 '#FD6A02';
 }
@@ -1095,8 +1083,8 @@ function dapiChart(cellData, geneData, config) {
             jQuery(input).bootstrapSwitch({
                 size: 'mini',
                 state: true,
-                onText: 'Yes',
-                offText: 'No',
+                onText: 'ShowGenes',
+                offText: 'HideGenes',
                 // http://bootstrapswitch.site/options.html
                 onSwitchChange: function (event) {
                     console.log('buttonClicked', event.target.checked);
