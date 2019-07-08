@@ -6,7 +6,7 @@ function classColorsCodes()
 
         {className: '0', IdentifiedType: '(0) Capillary endothelium', color: '#F8766D'},
         {className: '1', IdentifiedType: '(1) Ventricular cardiomyocytes', color: '#E58700'},
-        {className: '2', IdentifiedType: '(2) Fibroblast-like (connective tissue related)', color: '#C99800'},
+        {className: '2', IdentifiedType: '(2) Fibroblast-like (related to cardiac skeleton connective tissue)', color: '#C99800'},
         {className: '3', IdentifiedType: '(3) Epicardium-derived cells', color: '#A3A500'},
         {className: '4', IdentifiedType: '(4) Fibroblast-like (smaller vascular development)', color: '#6BB100'},
         {className: '5', IdentifiedType: '(5) Smooth muscle cells/ fibroblast-like', color: '#00BA38'},

@@ -124,7 +124,7 @@ function section() {
             y === '(10) Endohelium/ pericytes/ adventia' ? 2 :
             y === '(8) Fibroblast-like (larger vascular development)' ? 3 :
             y === '(4) Fibroblast-like (smaller vascular development)' ? 4 :
-            y === '(2) Fibroblast-like (connective tissue related)' ? 5 :
+            y === '(2) Fibroblast-like (related to cardiac skeleton connective tissue)' ? 5 :
             y === '(0) Capillary endothelium' ? 6 :
             y === '(12) Cardiomyocytes' ? 7 :
             y === '(7) Atrial cardiomyocytes' ? 8 :
