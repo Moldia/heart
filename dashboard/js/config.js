@@ -11,14 +11,14 @@ function config(){
             tiles: './dashboard/data/img/week4.5/week4.5_zoom7/{z}/{x}/{y}.png'
         },
         {
-            name: 'week 6.5_1',
+            name: 'PCW 6.5_1',
             roi: {x0: 0, x1: 18231, y0: 0, y1: 16876},
             imageSize: [16384, 15166],
             cellData: './dashboard/data/img/week6.5_1/iss.json',
             geneData: './dashboard/data/img/week6.5_1/Dapi_overlays.json',
             tiles: './dashboard/data/img/week6.5_1/week6.5_1_zoom7/{z}/{x}/{y}.png'
         },        {
-            name: 'week 6.5_2',
+            name: 'PCW 6.5_2',
             roi: {x0: 0, x1: 16510, y0: 0, y1: 18819},
             imageSize: [14374, 16384],
             cellData: './dashboard/data/img/week6.5_2/iss.json',

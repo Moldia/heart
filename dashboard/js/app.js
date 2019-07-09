@@ -15,7 +15,7 @@ var cookie = sessionStorage['myvariable']
 
 if (!cookie){ // if you dont have cookie, run the default selection
     console.log('No cookie, starting with default dataset');
-    configSettings = config().get('week 6.5_2')
+    configSettings = config().get('PCW 6.5_2')
 }
 else {
     console.log('Found cookie: ' + cookie);
@@ -110,8 +110,8 @@ function landingPoint(name){
 //create ramp
 function getLandingCellNum(str) {
     return str === 'week 4.5' ? 2855 :
-        str === 'week 6.5_1' ? 2507 :
-        str === 'week 6.5_2' ? 2621 :
+        str === 'PCW 6.5_1' ? 2507 :
+        str === 'PCW 6.5_2' ? 2621 :
         // str === 'week 6.5_2' ? 17734 :
         1;
 }
