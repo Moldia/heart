@@ -29,6 +29,7 @@ function dapi(config) {
             y === '12' ? '#E76BF3' :
             y === '13' ? '#FD61D1' :
             y === '14' ? '#FF67A4' :
+            y === 'myocytes' ? '#999999' :
             y === 'unclear' ? '#995C00' :
                 '#FD6A02';
 }

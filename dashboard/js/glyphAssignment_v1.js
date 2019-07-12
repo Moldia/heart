@@ -6,7 +6,7 @@ function glyphAssignment()
 		{gene: 'PLVAP',	taxonomy: '0',	glyphSymbol:'.',	glyphName:'point'},
 		{gene: 'TMEM100',	taxonomy: '0',	glyphSymbol:'v',	glyphName:'triangleDown'},
 		{gene: 'HSPB7',	taxonomy: '1',	glyphSymbol:'+',	glyphName:'plus'},
-		{gene: 'MYBPC3',	taxonomy: 'myocytes',	glyphSymbol:'o',	glyphName:'circle'},
+		{gene: 'MYBPC3',	taxonomy: '1',	glyphSymbol:'o',	glyphName:'circle'},
 		{gene: 'MYH7',	taxonomy: '1',	glyphSymbol:'v',	glyphName:'triangleDown'},
 		{gene: 'MYL2',	taxonomy: '1',	glyphSymbol:'>',	glyphName:'triangleRight'},
 		{gene: 'MYL3',	taxonomy: '1',	glyphSymbol:'.',	glyphName:'point'},
